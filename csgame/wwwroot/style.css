@@ -1,0 +1,548 @@
+/* --- تنظیمات کلی و فونت --- */
+body {
+    font-family: 'Vazirmatn', sans-serif; /* استفاده از فونت وزیرمتن */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: rtl; /* راست‌چین کردن کل صفحه */
+    background-color: #f8f9fa; /* یک پس‌زمینه خنثی و روشن */
+    color: #333;
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto; /* وسط‌چین کردن محتوا */
+    padding: 0 15px;
+}
+
+h1, h2, h3 {
+    color: #1a2a4a; /* یک رنگ تیره‌تر برای عناوین */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* خط زیرین زیبا برای عناوین بخش‌ها */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #007bff; /* رنگ اصلی سایت */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+section {
+    padding: 60px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* --- هدر و منو --- */
+#header {
+    background-color: #1a2a4a; /* پس‌زمینه تیره برای هدر */
+    color: #fff;
+    padding: 15px 0;
+    position: sticky; /* یا fixed برای ثابت ماندن در بالا */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#header nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+#header ul {
+    display: flex;
+    gap: 25px; /* فاصله بین آیتم‌های منو */
+}
+
+#header ul li a {
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+#header ul li a:hover,
+#header ul li a.active /* برای نشان دادن آیتم فعال */
+{
+    color: #fff;
+    font-weight: bold;
+}
+
+.telegram-support-btn-nav {
+    background-color: #2AABEE; /* رنگ تلگرام */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.telegram-support-btn-nav:hover {
+    background-color: #1f8acb;
+    color: white;
+}
+
+.telegram-support-btn-nav i {
+    font-size: 1.1rem;
+}
+
+
+/* --- بخش Hero --- */
+.hero-section {
+    background: url('image-1.jpg') no-repeat center center/cover; /* تصویر پس‌زمینه WoW */
+    color: #fff;
+    text-align: center;
+    padding: 120px 0;
+    position: relative; /* برای لایه تیره */
+}
+
+/* لایه تیره روی تصویر برای خوانایی بهتر متن */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* تیرگی 60% */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative; /* برای قرار گرفتن روی لایه تیره */
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff; /* رنگ عنوان در هیرو باید سفید باشد */
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* --- دکمه‌های عمومی --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px; /* دکمه‌های گردتر */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff; /* رنگ اصلی */
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* افکت کوچک هاور */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #fff;
+    color: #007bff;
+}
+
+.btn-buy {
+    background-color: #28a745; /* رنگ سبز برای خرید */
+    color: #fff;
+}
+
+.btn-buy:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- بخش محصولات --- */
+.products-section {
+    background-color: #ffffff; /* پس‌زمینه سفید برای این بخش */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* ستون‌های واکنش‌گرا */
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 80px; /* اندازه آیکون محصول */
+    height: 80px;
+    margin-bottom: 20px;
+    object-fit: contain;
+}
+
+.product-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.product-card .price-info {
+    font-weight: bold;
+    color: #dc3545; /* رنگ قرمز برای قیمت */
+    margin-bottom: 20px;
+}
+
+/* --- بخش محاسبه‌گر قیمت --- */
+.calculator-section {
+    background-color: #e9ecef; /* پس‌زمینه کمی متفاوت */
+}
+
+.calculator-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 500px; /* محدود کردن عرض محاسبه‌گر */
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.calculator-box label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.calculator-box input[type="number"] {
+    width: 80%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* مخفی کردن فلش‌های بالا/پایین input number */
+.calculator-box input[type=number]::-webkit-outer-spin-button,
+.calculator-box input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.calculator-box input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+
+.calculated-price {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+.calculated-price strong {
+    color: #28a745; /* رنگ سبز برای قیمت محاسبه شده */
+    font-size: 1.8rem;
+    margin-right: 10px; /* کمی فاصله */
+    display: inline-block; /* برای جلوگیری از شکستن خط */
+    min-width: 100px; /* حداقل عرض برای نمایش بهتر */
+    text-align: right; /* اطمینان از تراز قیمت */
+}
+
+.price-per-gold {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 15px;
+}
+
+.btn-buy-calculated {
+    width: 80%; /* دکمه خرید هم اندازه با ورودی */
+    margin-top: 10px;
+}
+.btn-buy-calculated i {
+    margin-left: 8px; /* فاصله آیکون سبد خرید */
+}
+
+/* استایل دکمه غیرفعال */
+.btn-buy-calculated:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* --- بخش درباره ما --- */
+.about-section {
+    background-color: #ffffff;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto 30px auto; /* وسط‌چین کردن پاراگراف */
+    text-align: center; /* یا justify برای تراز متن */
+}
+
+.contact-info {
+    margin-top: 40px;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 30px auto 0;
+}
+
+.contact-info h3 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-align: right; /* تراز اطلاعات تماس به راست */
+    padding-right: 20%; /* کمی تورفتگی برای ظاهر بهتر */
+}
+
+.contact-info p i {
+    margin-left: 10px; /* فاصله آیکون از متن */
+    color: #007bff; /* رنگ آیکون‌ها */
+    width: 20px; /* هم‌اندازه کردن فضای آیکون‌ها */
+    text-align: center;
+}
+
+/* --- بخش تماس با ما / پشتیبانی --- */
+.contact-section {
+    background-color: #1a2a4a; /* پس‌زمینه تیره برای کنتراست */
+    color: #fff;
+}
+
+.contact-section h2 {
+    color: #fff; /* رنگ عنوان در بخش تیره */
+}
+
+.contact-section h2::after {
+     background-color: #fff; /* رنگ خط زیر عنوان */
+}
+
+.contact-section p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-buttons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* استایل دکمه‌های تماس */
+.btn-telegram { background-color: #2AABEE; color: white; }
+.btn-telegram:hover { background-color: #1f8acb; color: white; }
+.btn-phone { background-color: #f0ad4e; color: white; } /* رنگ نارنجی برای تلفن */
+.btn-phone:hover { background-color: #ec971f; color: white; }
+.btn-email { background-color: #5bc0de; color: white; } /* رنگ آبی روشن برای ایمیل */
+.btn-email:hover { background-color: #31b0d5; color: white; }
+
+
+.contact-buttons .btn i {
+    margin-left: 8px;
+}
+
+.support-hours {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #adb5bd; /* رنگ خاکستری روشن */
+}
+
+/* --- فوتر --- */
+#footer {
+    background-color: #111d32; /* تیره‌تر از هدر */
+    color: #a0a0a0;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+.modal {
+    display: none; /* به طور پیش فرض مخفی است */
+    position: fixed; /* ثابت در صفحه */
+    z-index: 1000; /* بالاتر از بقیه محتوا */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* اسکرول در صورت نیاز */
+    /* استفاده از Flexbox برای وسط چین کردن محتوای مدال */
+    display: flex; /* تغییر از none به flex برای نمایش */
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* شروع با شفافیت صفر برای انیمیشن */
+    visibility: hidden; /* برای بهبود دسترسی پذیری و جلوگیری از تعامل */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* انیمیشن محو شدن */
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+    display: flex; /* حتماً display باید اینجا flex باشد */
+
+}
+
+.modal-overlay {
+    position: fixed; /* یا absolute اگر modal position relative دارد */
+    z-index: 1001; /* زیر محتوای مدال، روی بقیه صفحه */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* پس زمینه تیره نیمه شفاف */
+}
+
+.modal-content {
+    position: relative; /* برای جای‌گیری دکمه بستن */
+    z-index: 1002; /* روی overlay */
+    background-color: #fefefe;
+    margin: auto; /* ضروری نیست وقتی از flex استفاده می‌کنیم */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* یا یک عرض ثابت */
+    max-width: 500px; /* حداکثر عرض */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: right; /* برای محتوای فارسی */
+    animation: slideDown 0.4s ease-out; /* انیمیشن ظاهر شدن */
+}
+
+/* انیمیشن ساده برای ظاهر شدن مدال */
+@keyframes slideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.modal-content h3 {
+    margin-top: 0;
+    color: var(--primary-color); /* یا رنگ دلخواه */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    left: 15px; /* در گوشه بالا-چپ برای RTL */
+    top: 10px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: black;
+    text-decoration: none;
+    outline: none; /* حذف خط دور پیش فرض فوکوس */
+}
+
+/* استایل برای دکمه تلگرام داخل مدال */
+.modal-content .btn-secondary {
+    background-color: #2AABEE; /* رنگ تلگرام */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content .btn-secondary:hover {
+    background-color: #1f8ac9; /* رنگ تیره‌تر تلگرام */
+}
+
+.modal-content .btn-secondary i {
+    margin-left: 8px; /* فاصله آیکون از متن */
+}

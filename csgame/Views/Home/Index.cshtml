@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="خرید گلد و گیم تایم بازی World of Warcraft با بهترین قیمت و سریعترین زمان تحویل در csgame.">
+    <title>csgame - خرید گلد و گیم تایم WoW</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- توصیه می‌شود از یک فونت فارسی زیبا مانند Vazirmatn یا... استفاده کنید -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- برای آیکون‌ها می‌توانید از Font Awesome استفاده کنید -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- ==== هدر ==== -->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <a href="#hero" class="logo">CSGAME</a>
+                <ul>
+                    <li><a href="#hero">خانه</a></li>
+                    <li><a href="#products">محصولات</a></li>
+                    <li><a href="#calculator">محاسبه قیمت</a></li>
+                    <li><a href="#about">درباره ما</a></li>
+                    <li><a href="#contact">تماس با ما</a></li>
+                </ul>
+                <a href="https://t.me/csgame_support" target="_blank" class="telegram-support-btn-nav">
+                    <i class="fab fa-telegram-plane"></i> پشتیبانی تلگرام
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==== بخش اصلی (Hero) ==== -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h1>خرید گلد و گیم تایم World of Warcraft</h1>
+            <p>سریع‌ترین و مطمئن‌ترین راه برای تهیه گلد و گیم تایم WoW در ایران.</p>
+            <a href="#products" class="btn btn-primary">مشاهده محصولات</a>
+            <a href="#calculator" class="btn btn-secondary">محاسبه قیمت گلد</a>
+        </div>
+        <!-- می‌توانید یک تصویر پس‌زمینه زیبا از WoW برای این بخش قرار دهید -->
+    </section>
+
+    <!-- ==== بخش محصولات ==== -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2>محصولات ما</h2>
+            <div class="product-grid">
+                <!-- محصول ۱: گلد -->
+                <div class="product-card">
+                    <h3>گلد World of Warcraft</h3>
+                    <p>گلد مورد نیاز خود را با بهترین قیمت و سریع‌ترین زمان تحویل دریافت کنید. موجودی برای تمام سرورها.</p>
+                    <p class="price-info">قیمت: هر ۱ عدد = ۱۵۰۰ تومان</p>
+                    <p class="price-info">حتما قبل از خرید از طریق پشتیبانی موجودی را چک بفرمایید.</p>
+                    <a href="#calculator" class="btn btn-buy">محاسبه و خرید گلد</a>
+                </div>
+
+                <!-- محصول ۲: گیم تایم -->
+                <div class="product-card">
+                    <h3>گیم تایم WoW (۶۰ روزه)</h3>
+                    <p>اکانت خود را برای ۶۰ روز شارژ کنید و بدون وقفه به ماجراجویی در Azeroth ادامه دهید.</p>
+                    <p class="price-info">قیمت: درحال حاضر موجود نمی باشد</p>
+                    <a href="#contact" class="btn btn-buy">خرید گیم تایم</a> <!-- یا لینک به صفحه خرید جداگانه اگر دارید -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== بخش محاسبه‌گر قیمت گلد ==== -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2>محاسبه‌گر قیمت گلد</h2>
+            <p>مقدار گلد مورد نیاز خود را وارد کنید تا قیمت نهایی آن را مشاهده کنید.</p>
+            <div class="calculator-box">
+                <label for="gold-amount">مقدار گلد:</label>
+                <input type="number" id="gold-amount" min="1" placeholder="مثلا: 10000">
+                <div class="calculated-price">
+                    <span>قیمت نهایی:</span>
+                    <strong id="final-price">۰ تومان</strong>
+                </div>
+                <button id="buy-calculated-gold" class="btn btn-primary btn-buy-calculated" disabled>
+                    <i class="fas fa-shopping-cart"></i> خرید گلد به این مقدار
+                </button>
+                <p class="price-per-gold">هر ۱ گلد = ۱۵۰۰ تومان</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== بخش درباره ما ==== -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>درباره csgame</h2>
+            <p>
+                ما در csgame با هدف فراهم کردن بستری امن، سریع و آسان برای خرید گلد و گیم تایم بازی محبوب World of Warcraft برای بازیکنان ایرانی فعالیت خود را آغاز کردیم. هدف ما ارائه بهترین قیمت‌ها در کنار پشتیبانی قوی و تحویل فوری است تا شما بدون دغدغه از بازی لذت ببرید.
+            </p>
+            <div class="contact-info">
+                <h3>اطلاعات تماس</h3>
+                <p><i class="fas fa-phone"></i> تلفن: <a href="tel:+989336130720">+989336130720</a></p>
+                <p><i class="fas fa-envelope"></i> ایمیل: <a href="mailto:info@csgame.ir">info@csgame.ir</a></p>
+                <p><i class="fab fa-telegram-plane"></i> پشتیبانی تلگرام: <a href="https://t.me/csgame_support" target="_blank">csgame_support@@</a></p>
+                <!-- در صورت نیاز می‌توانید آدرس یا سایر اطلاعات را اضافه کنید -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== بخش تماس با ما / پشتیبانی ==== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>تماس با ما و پشتیبانی</h2>
+            <p>برای هرگونه سوال، پیگیری سفارش یا دریافت پشتیبانی، از طریق راه‌های زیر با ما در ارتباط باشید:</p>
+            <div class="contact-buttons">
+                <a href="https://t.me/csgame_support" target="_blank" class="btn btn-telegram">
+                    <i class="fab fa-telegram-plane"></i> پشتیبانی آنلاین در تلگرام
+                </a>
+                <a href="tel:+989336130720" class="btn btn-phone">
+                    <i class="fas fa-phone-alt"></i> تماس تلفنی
+                </a>
+                 <a href="mailto:info@csgame.ir" class="btn btn-email">
+                    <i class="fas fa-envelope"></i> ارسال ایمیل
+                </a>
+            </div>
+            <p class="support-hours">ساعات پاسخگویی: شنبه تا پنجشنبه، ۹ صبح الی ۹ شب</p>
+        </div>
+    </section>
+
+    <!-- ==== فوتر ==== -->
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; ۱۴۰۳ (2024) ، تمامی حقوق برای وب‌سایت csgame محفوظ است.</p>
+            <!-- می‌توانید لینک‌های دیگری مانند قوانین و مقررات را اینجا اضافه کنید -->
+        </div>
+    </footer>
+     <!-- ========= Modal پرداخت ناموفق ========= -->
+     <div id="payment-unavailable-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">&times;</button>
+            <h3>پرداخت آنلاین غیرفعال</h3>
+            <p>
+                کاربر گرامی، در حال حاضر به علت فعال نبودن درگاه پرداخت، امکان خرید مستقیم از طریق سایت وجود ندارد.
+            </p>
+            <p>
+                لطفاً برای خرید گلد یا گیم تایم، از طریق پشتیبانی تلگرام با ما در ارتباط باشید:
+            </p>
+            <p style="text-align: center; margin-top: 20px;">
+                <a href="https://t.me/csgame_support" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-telegram-plane"></i> تماس با پشتیبانی تلگرام
+                </a>
+            </p>
+        </div>
+    </div>
+    <!-- ========= پایان Modal ========= -->
+    <script src="script.js"></script>
+</body>
+</html>
