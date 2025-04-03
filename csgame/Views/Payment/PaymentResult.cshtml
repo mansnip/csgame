@@ -1,0 +1,97 @@
+﻿
+@{
+    // تنظیم عنوان صفحه بر اساس مقدار ViewBag.Success
+    ViewData["Title"] = ViewBag.Success ? "پرداخت موفق" : "نتیجه پرداخت ناموفق";
+    // استخراج مقادیر ViewBag برای خوانایی بهتر (اختیاری)
+    bool isSuccess = ViewBag.Success ?? false; // پیش‌فرض ناموفق اگر تنظیم نشده باشد
+    long? refId = ViewBag.RefId;
+    string resultMessage = ViewBag.ResultMessage;
+    string warningMessage = ViewBag.ResultWarning; // پیام هشدار جداگانه
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header text-white @(isSuccess ? "bg-success" : "bg-danger")">
+                    <h4 class="mb-0">
+                        @* نمایش آیکون و عنوان مناسب *@
+                        @if (isSuccess)
+                        {
+                            <i class="fas fa-check-circle me-2"></i> @* آیکون تیک برای موفقیت *@
+                            <span>@ViewData["Title"]</span>
+                        }
+                        else
+                        {
+                            <i class="fas fa-times-circle me-2"></i> @* آیکون ضربدر برای عدم موفقیت *@
+                            <span>@ViewData["Title"]</span>
+                        }
+                    </h4>
+                </div>
+                <div class="card-body text-center">
+
+                    @* نمایش پیام اصلی نتیجه *@
+                    @if (!string.IsNullOrEmpty(resultMessage))
+                    {
+                        <p class="lead @(isSuccess ? "text-success" : "text-danger") mb-4">@resultMessage</p>
+                    }
+                    else @* پیام پیش‌فرض اگر هیچ پیامی از TempData نیامده باشد *@
+                    {
+                        <p class="lead @(isSuccess ? "text-success" : "text-danger") mb-4">
+                            @(isSuccess ? "عملیات پرداخت با موفقیت انجام شد." : "متاسفانه عملیات پرداخت ناموفق بود.")
+                        </p>
+                    }
+
+
+                    @* نمایش کد پیگیری در صورت موفقیت *@
+                    @if (isSuccess && refId.HasValue)
+                    {
+                        <div class="alert alert-info" role="alert">
+                            <p class="mb-1"><strong>کد پیگیری:</strong></p>
+                            <h3 class="mb-1 font-monospace">@refId</h3>
+                            <small>لطفاً این کد را به پشتیبان فروش ارائه دهید.</small>
+                        </div>
+                    }
+
+                    @* نمایش پیام هشدار (اگر وجود داشته باشد) *@
+                    @if (!string.IsNullOrEmpty(warningMessage))
+                    {
+                        <div class="alert alert-warning mt-3" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>توجه:</strong> @warningMessage
+                        </div>
+                    }
+
+                    <hr class="my-4">
+
+                    @* دکمه بازگشت *@
+                    <p>
+                        @* لینک بازگشت را به صفحه مورد نظر خود تغییر دهید (مثلا صفحه اصلی یا داشبورد کاربر) *@
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+                            <i class="fas fa-home me-1"></i> بازگشت به صفحه اصلی
+                        </a>
+                        @* یا لینک به پنل کاربری/سفارشات *@
+                        @*
+                         <a href="@Url.Action("Orders", "Account")" class="btn btn-outline-secondary ms-2">
+                              مشاهده سفارشات
+                         </a>
+                         *@
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+نکات مهم:
+1.  وابستگی‌ها: این کد برای استایل‌دهی از کلاس‌های Bootstrap 5 (مانند `container`, `row`, `col-md-8`, `card`, `alert`, `bg-success`, `text-center`, `btn`, `mt-5`, `mb-4`, `me-2` و ...) استفاده می‌کند. برای نمایش آیکون‌ها (`<i class="fas fa-...">`) نیاز به کتابخانه Font Awesome دارید. اطمینان حاصل کنید که این موارد در Layout اصلی شما (_Layout.cshtml) یا مستقیماً در این صفحه اضافه شده باشند.
+2.  شخصی‌سازی:
+    *   متن پیام‌ها و عناوین را می‌توانید به دلخواه تغییر دهید.
+    *   لینک دکمه "بازگشت به صفحه اصلی" (`@Url.Action("Index", "Home")`) را به آدرس مناسب در برنامه خودتان (مثلاً صفحه اصلی، داشبورد کاربر، صفحه سفارشات و...) تغییر دهید.
+    *   استایل‌ها و کلاس‌های CSS را می‌توانید برای تطابق با ظاهر سایت خودتان ویرایش کنید.
+3.  کد پیگیری: کد پیگیری فقط زمانی نمایش داده می‌شود که `ViewBag.Success` برابر `true` باشد و `ViewBag.RefId` مقدار داشته باشد (null نباشد).
+4.  پیام هشدار: پیام هشدار (اگر از `ViewBag.ResultWarning` استفاده می‌کنید) به صورت جداگانه و با استایل هشدار نمایش داده می‌شود.
+*@
+

@@ -75,16 +75,18 @@
             <h2>محاسبه‌گر قیمت گلد</h2>
             <p>مقدار گلد مورد نیاز خود را وارد کنید تا قیمت نهایی آن را مشاهده کنید.</p>
             <div class="calculator-box">
-                <label for="gold-amount">مقدار گلد:</label>
-                <input type="number" id="gold-amount" min="1" placeholder="مثلا: 10000">
-                <div class="calculated-price">
-                    <span>قیمت نهایی:</span>
-                    <strong id="final-price">۰ تومان</strong>
-                </div>
-                <button id="buy-calculated-gold" class="btn btn-primary btn-buy-calculated" disabled>
-                    <i class="fas fa-shopping-cart"></i> خرید گلد به این مقدار
-                </button>
-                <p class="price-per-gold">هر ۱ گلد = ۱۵۰۰ تومان</p>
+                <form asp-action="Pay" asp-controller="Home" method="post">
+                    <label for="gold-amount">مقدار گلد:</label>
+                    <input name="gold" type="number" id="gold-amount" min="1" placeholder="مثلا: 10000">
+                    <div class="calculated-price">
+                        <span>قیمت نهایی:</span>
+                        <strong id="final-price">۰ تومان</strong>
+                    </div>
+                    <button id="buy-calculated-gold" type="submit" class="btn btn-primary btn-buy-calculated" >
+                        <i class="fas fa-shopping-cart"></i> خرید گلد به این مقدار
+                    </button>
+                    <p class="price-per-gold">هر ۱ گلد = ۱۵۰۰ تومان</p>
+                </form>
             </div>
         </div>
     </section>

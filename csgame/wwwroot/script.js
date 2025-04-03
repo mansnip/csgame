@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const goldAmountInput = document.getElementById('gold-amount');
     const finalPriceDisplay = document.getElementById('final-price');
     const buyButton = document.getElementById('buy-calculated-gold');
-    const pricePerGold = 1500;
+    const pricePerGold = 15000;
 
     // --- انتخاب المان‌های مدال ---
     const modal = document.getElementById('payment-unavailable-modal');
@@ -19,27 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
             let amount = parseInt(goldAmountInput.value);
             if (isNaN(amount) || amount <= 0) {
                 amount = 0;
-                finalPriceDisplay.textContent = '۰ تومان';
+                finalPriceDisplay.textContent = '۰ ریال';
                 buyButton.disabled = true;
                 buyButton.classList.add('disabled');
             } else {
                 const totalPrice = amount * pricePerGold;
-                finalPriceDisplay.textContent = totalPrice.toLocaleString('fa-IR') + ' تومان';
+                finalPriceDisplay.textContent = totalPrice.toLocaleString('fa-IR') + ' ریال';
                 buyButton.disabled = false;
                 buyButton.classList.remove('disabled');
             }
         });
 
-        // --- تغییر رفتار دکمه خرید محاسبه‌گر ---
-        buyButton.addEventListener('click', function(e) {
-            // جلوگیری از هرگونه رفتار پیش‌فرض دکمه (اگر داخل فرم باشد)
-            e.preventDefault();
-
-            // فقط اگر دکمه غیرفعال نباشد، مدال را نمایش بده
-            if (!buyButton.disabled && modal) {
-                modal.classList.add('show'); // نمایش مدال با افزودن کلاس show
-            }
-        });
+        
 
     } else {
         console.warn("برخی از المان‌های محاسبه‌گر قیمت یافت نشدند.");

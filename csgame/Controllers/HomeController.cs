@@ -16,4 +16,20 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Pay(int gold)
+    {
+        if (gold == 0)
+        {
+            return View("Index");
+        }
+        int price = gold * 1500;
+        string email = "fasterman31@gmail.com";
+        string phoneNumber = "09214232622";
+        string orderId = "111";
+
+        return Redirect($"/Payment/RequestPaymentWithAll?orderId={orderId}&price={price}&email={email}&phoneNumber={phoneNumber}");
+    }
 }
