@@ -25,7 +25,7 @@ public class HomeController : Controller
         {
             return View("Index");
         }
-        int price = gold * 1500;
+        int price = gold * 15000;
         string email = "fasterman31@gmail.com";
         string phoneNumber = "09214232622";
         string orderId = "111";
