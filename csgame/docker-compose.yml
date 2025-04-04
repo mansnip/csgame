@@ -1,46 +1,51 @@
-﻿version: '3.8' # از یک نسخه جدیدتر استفاده کنید
+﻿version: '3.8'
 
 services:
-  # سرویس برای اپلیکیشن NET. شما
-  webapp:
-    container_name: my-aspnet-app  # نام دلخواه برای کانتینر اپلیکیشن
-    build:
-      context: .  # مسیر Dockerfile شما (اگر در همین پوشه است، نقطه کافی است)
-      dockerfile: YourApp/Dockerfile # مسیر دقیق Dockerfile نسبت به context
-    ports:
-      - "8080:80" # پورت 80 کانتینر را به پورت 8080 هاست مپ کنید (یا پورت مورد نظر خودتان)
-    environment:
-      # --- مهم: Connection String از طریق متغیر محیطی ---
-      - ConnectionStrings__DefaultConnection=Server=db;Database=MyDatabaseName;User ID=sa;Password=${SA_PASSWORD};TrustServerCertificate=True # توضیح در ادامه
-      # متغیرهای محیطی دیگر مورد نیاز اپلیکیشن شما
-      # - ASPNETCORE_ENVIRONMENT=Production
-      # - ZarinpalSettings__MerchantId=YOUR_MERCHANT_ID
-    depends_on:
-      - db # مشخص می‌کند که این سرویس به سرویس db وابسته است
-    networks:
-      - app-network # اتصال به شبکه مشترک
-
-  # سرویس برای دیتابیس SQL Server
+  # سرویس دیتابیس SQL Server
   db:
-    container_name: my-sql-server # نام دلخواه برای کانتینر دیتابیس
-    image: mcr.microsoft.com/mssql/server:2019-latest # ایمیج رسمی SQL Server برای لینوکس (نسخه را می‌توانید تغییر دهید)
+    image: mcr.microsoft.com/mssql/server:2022-latest # یا نسخه دلخواه دیگر
+    container_name: sql_server_db
     environment:
-      - ACCEPT_EULA=Y # ضروری برای پذیرش لایسنس
-      - SA_PASSWORD=${SA_PASSWORD} # --- مهم: رمز عبور کاربر sa ---
-      # - MSSQL_PID=Developer # اختیاری: برای استفاده از نسخه Developer (رایگان)
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: 'Pashmak0921C#' # رمز عبور قوی خود را اینجا بگذارید
+      # MSSQL_PID: 'Developer' # (اختیاری) برای نسخه Developer
     ports:
-      # این قسمت اختیاری است: اگر می‌خواهید از بیرون (مثلاً با SSMS از روی سیستم خودتان) به دیتابیس وصل شوید
-      # پورت 1433 کانتینر را به پورت 1433 هاست مپ کنید
-      - "1433:1433"
+      - "1433:1433" # پورت SQL Server
     volumes:
-      - sqlserver-data:/var/opt/mssql # --- مهم: نگهداری داده‌های دیتابیس ---
+      - sql_data:/var/opt/mssql # Volume برای داده‌ها
     networks:
-      - app-network # اتصال به شبکه مشترک
+      - csgame_network # استفاده از شبکه مشترک
+
+  # سرویس اپلیکیشن csgame.App
+  app:
+    # به جای 'image'، از 'build' استفاده می‌کنیم تا از Dockerfile شما ایمیج بسازد
+    build:
+      context: . # مسیر پوشه‌ای که Dockerfile شما در آن قرار دارد (معمولاً ریشه پروژه)
+      dockerfile: Dockerfile # نام فایل Dockerfile (اگر نامش متفاوت است)
+    container_name: csgame_app
+    ports:
+      # پورت 8080 داخل کانتینر (که در Dockerfile شما EXPOSE شده)
+      # را به پورت 80 روی هاست مپ می‌کنیم (یا هر پورتی که می‌خواهید از بیرون به آن دسترسی داشته باشید)
+      - "80:8080"
+      # اگر از پورت 8081 هم استفاده می‌کنید:
+      - "8081:8081"
+    environment:
+      # Connection String برای اتصال به سرویس 'db' در همین فایل docker-compose
+      ConnectionStrings__DefaultConnection: "Server=199.247.4.140;Database=VeilVPNDb;User ID=sa;Password=Pashmak0921C#;TrustServerCertificate=True;Encrypt=False"
+      # تنظیم پورت داخلی که ASP.NET Core روی آن گوش می‌دهد (مطابق با EXPOSE در Dockerfile)
+      # اگر برنامه شما روی 8080 گوش می‌دهد، این ممکن است لازم نباشد یا باید مطابق تنظیمات برنامه باشد
+      ASPNETCORE_URLS: "http://+:8080"
+      # سایر متغیرهای محیطی مورد نیاز اپلیکیشن شما
+      ASPNETCORE_ENVIRONMENT: "Production"
+    depends_on:
+      - db # قبل از اجرای اپلیکیشن، منتظر آماده شدن دیتابیس می‌ماند
+    networks:
+      - csgame_network # استفاده از شبکه مشترک
 
 volumes:
-  sqlserver-data: # تعریف Volume برای ذخیره پایدار داده‌های SQL Server
+  sql_data: # تعریف Volume برای دیتابیس
+    driver: local
 
 networks:
-  app-network: # تعریف شبکه سفارشی برای ارتباط بین کانتینرها
+  csgame_network: # تعریف شبکه برای ارتباط بین کانتینرها
     driver: bridge
-

@@ -30,6 +30,11 @@ public class HomeController : Controller
         string phoneNumber = "09214232622";
         string orderId = "111";
 
-        return Redirect($"/Payment/RequestPaymentWithAll?orderId={orderId}&price={price}&email={email}&phoneNumber={phoneNumber}");
+        return Redirect($"/Payment/RequestPaymentt?orderId={orderId}&price={price}&email={email}&phoneNumber={phoneNumber}");
+    }
+
+    public IActionResult ApiPayment(string InvoiceId)
+    {
+        return View();
     }
 }
